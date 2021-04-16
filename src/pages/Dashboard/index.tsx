@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
 import Header from '../../components/Header';
 import api from '../../services/api';
@@ -7,22 +7,25 @@ import ModalAddFood from '../../components/ModalAddFood';
 import ModalEditFood from '../../components/ModalEditFood';
 import { FoodsContainer } from './styles';
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      foods: [],
-      editingFood: {},
-      modalOpen: false,
-      editModalOpen: false,
-    }
-  }
 
-  async componentDidMount() {
-    const response = await api.get('/foods');
+interface FoodTypes {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  available: boolean;
+  image: string;
+}
 
-    this.setState({ foods: response.data });
-  }
+interface editingFood {
+  food: FoodTypes;
+  editModalOpen: boolean;
+}
+
+function Dashboard() {
+  const [foods, setFoods] = useState<FoodTypes[]>([]);
+  const [editingFood, setEditingFood] = useState({} as editingFood);
+
 
   handleAddFood = async food => {
     const { foods } = this.state;
@@ -59,33 +62,7 @@ class Dashboard extends Component {
   }
 
   handleDeleteFood = async id => {
-    const { foods } = this.state;
 
-    await api.delete(`/foods/${id}`);
-
-    const foodsFiltered = foods.filter(food => food.id !== id);
-
-    this.setState({ foods: foodsFiltered });
-  }
-
-  toggleModal = () => {
-    const { modalOpen } = this.state;
-
-    this.setState({ modalOpen: !modalOpen });
-  }
-
-  toggleEditModal = () => {
-    const { editModalOpen } = this.state;
-
-    this.setState({ editModalOpen: !editModalOpen });
-  }
-
-  handleEditFood = food => {
-    this.setState({ editingFood: food, editModalOpen: true });
-  }
-
-  render() {
-    const { modalOpen, editModalOpen, editingFood, foods } = this.state;
 
     return (
       <>

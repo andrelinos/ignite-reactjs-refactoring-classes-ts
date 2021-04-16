@@ -2,7 +2,6 @@
   "name": "refactoring-classes-ts",
   "version": "0.1.0",
   "private": true,
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -10,14 +9,12 @@
     "eject": "react-scripts eject",
     "server": "json-server server.json -p 3333"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
-
   "browserslist": {
     "production": [
       ">0.2%",
@@ -50,6 +47,9 @@
     "@types/node": "^14.14.39",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/react-modal": "^3.12.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.9",
     "json-server": "^0.16.3",
     "typescript": "^4.2.4"
   }
