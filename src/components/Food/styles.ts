@@ -7,6 +7,13 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   background: #f0f0f5;
   border-radius: 8px;
+  -webkit-box-shadow: 7px 7px 6px -8px rgba(0,0,0,0.72);
+  box-shadow: 7px 7px 6px -8px rgba(0,0,0,0.72);
+  transition: transform 0.2s;
+
+  :hover {
+    transform: scale(1.01);
+  }
 
   header {
     background: #ffb84d;

@@ -6,7 +6,7 @@ import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
-interface FoodTypes {
+interface FoodProps {
   id: number;
   name: string;
   description: string;
@@ -15,16 +15,11 @@ interface FoodTypes {
   image: string;
 }
 
-interface editingFood {
-  food: FoodTypes;
-  editModalOpen: boolean;
-}
-
 interface ModalEditFoodProps {
   isOpen: boolean;
   setIsOpen: () => void;
-  handleUpdateFood: (data: FoodTypes) => void;
-  editingFood: editingFood;
+  handleUpdateFood: (data: FoodProps) => void;
+  editingFood: FoodProps;
 }
 
 function ModalEditFood({
@@ -35,7 +30,7 @@ function ModalEditFood({
 }: ModalEditFoodProps) {
   const formRef = createRef<FormHandles>();
 
-  async function handleSubmit(data: FoodTypes) {
+  async function handleSubmit(data: FoodProps) {
     handleUpdateFood(data);
     setIsOpen();
   }

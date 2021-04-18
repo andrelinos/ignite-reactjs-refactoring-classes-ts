@@ -5,7 +5,6 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline: 0;
   }
 
   body {
@@ -25,5 +24,10 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+    transition: filter 0.2s;
+  }
+
+  button:hover {
+    filter: brightness(0.9);
   }
 `;
